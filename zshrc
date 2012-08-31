@@ -29,3 +29,7 @@ function railsapp {
   shift 2
   rails new $appname -m https://raw.github.com/pattonjp/rails-templates/master/$template.rb $@ -T -O
 }
+
+function rails_composer {
+  rails new $1 -m https://raw.github.com/RailsApps/rails-composer/master/composer.rb -O
+}
