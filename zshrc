@@ -1,9 +1,9 @@
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="pattonjp"
-DISABLE_AUTO_UPDATE="true"
-DISABLE_LS_COLORS="true"
+DISABLE_AUTO_UPDATE="false"
+DISABLE_LS_COLORS="false"
 
-plugins=(bundler brew gem mecurial pattonjp node, heroku)
+plugins=(brew gem mecurial pattonjp node, heroku)
 
 export PATH="/usr/local/bin:$PATH"
 
@@ -15,13 +15,13 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 alias gitk='gitk 2>/dev/null'
 
 CORRECT_IGNORE=”subl” 
-
+CORRECT_IGNORE=”hk” 
+export ANDROID_HOME=/usr/local/opt/android-sdk
 export BUNDLER_EDITOR='subl'
+export EDITOR='subl -w'
 export EC2_HOME=~/.ec2
-export PATH=$PATH:$EC2_HOME/bin
-export EC2_PRIVATE_KEY=`ls $EC2_HOME/pk-*.pem`
-export EC2_CERT=`ls $EC2_HOME/cert-*.pem`
-export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home/
+
+alias tailf='tail -f'
 
 function railsapp {
   template=$1
@@ -33,3 +33,20 @@ function railsapp {
 function rails_composer {
   rails new $1 -m https://raw.github.com/RailsApps/rails-composer/master/composer.rb -O
 }
+
+export PATH=/usr/local/share/npm/bin:$PATH
+
+export MARKPATH=$HOME/.marks
+function jump { 
+    cd -P $MARKPATH/$1 2>/dev/null || echo "No such mark: $1"
+}
+function mark { 
+    mkdir -p $MARKPATH; ln -s $(pwd) $MARKPATH/$1
+}
+function unmark { 
+    rm -i $MARKPATH/$1 
+}
+function marks {
+    ls -l $MARKPATH | sed 's/  / /g' | cut -d' ' -f9- | sed 's/ -/\t-/g' && echo
+}
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
