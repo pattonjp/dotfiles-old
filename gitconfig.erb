@@ -10,7 +10,7 @@ print("Your Email: "); STDOUT.flush; @user_email = STDIN.gets.chomp %>
   ci = commit -am
   b = branch
   ds = diff --staged
-  fup = log --since '1 day ago' --oneline --author <%= user_email %>
+  fup = log --since '1 day ago' --oneline --author <%= @user_email %>
   lg = log --color --graph --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%Creset %s %C(green)(%cr) %C(bold blue)%C(reset)' --abbrev-commit
   # pretty one-line log with tags, branches and authors
   ls = log --pretty=format:'%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]' --decorate --date=short  
