@@ -5,7 +5,7 @@ DISABLE_LS_COLORS="false"
 
 plugins=(brew gem mecurial pattonjp node, heroku)
 
-export PATH="/usr/local/bin:$PATH"
+export PATH="$HOME/bin:/usr/local/bin:$PATH"
 
 source $ZSH/oh-my-zsh.sh
 
