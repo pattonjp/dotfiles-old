@@ -7,7 +7,8 @@ task :install do
   switch_to_zsh
   replace_all = false
   files = Dir['*'] - %w[Rakefile README.rdoc LICENSE oh-my-zsh]
-  files << "oh-my-zsh/custom/plugins/pattonjp"
+
+  files.concat Dir.glob('*').select {|f| File.directory? f}.map!{|dir| "oh-my-zsh/custom/plugins/#{dir}" }
   files << "oh-my-zsh/custom/pattonjp.zsh-theme"
   files.each do |file|
     system %Q{mkdir -p "$HOME/.#{File.dirname(file)}"} if file =~ /\//
