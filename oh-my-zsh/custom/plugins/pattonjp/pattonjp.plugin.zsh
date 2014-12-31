@@ -2,6 +2,9 @@ c() { cd ~/code/$1; }
 _c() { _files -W ~/code -/; }
 compdef _c c
 
+alias gitcleanupremote="git checkout master && git remote update --prune | git branch -r --merged | grep -v master | sed -e 's/origin\//:/' | xargs git push origin"
+alias gitcleanup="git branch --merged | grep -v '\*' | xargs -n 1 git branch -d"
+
 function whiteboard {
   convert $1 -morphology Convolve DoG:15,100,0 -negate -normalize -blur 0x1 -channel RBG -level 60%,91%,0.1 $2
 }
