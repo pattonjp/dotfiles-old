@@ -4,7 +4,7 @@ DISABLE_AUTO_UPDATE="false"
 DISABLE_LS_COLORS="false"
 export PATH="$HOME/bin:/usr/local/bin:$PATH"
 
-plugins=(brew gem pattonjp node heroku zsh_reload jump boot2docker porter)
+plugins=(brew gem docker pattonjp node heroku zsh_reload jump boot2docker porter)
 
 
 source $ZSH/oh-my-zsh.sh

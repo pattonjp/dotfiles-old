@@ -34,3 +34,7 @@ function js2c {
       fi
   done
 }
+
+cpDir() {
+  pwd | pbcopy
+}
